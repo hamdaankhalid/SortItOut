@@ -5,6 +5,8 @@
 ## Todo:
 - Bubble sort
 - Merge sort
+- Quick sort
+- Radix sort
 
 ## Done:
 - Insertion sort
