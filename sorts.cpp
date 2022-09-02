@@ -1,3 +1,6 @@
+#include <iostream>
+#include <cmath>
+
 void swap(int arr[], int i, int j) {
   int temp = arr[i];
   arr[i] = arr[j];
@@ -55,5 +58,60 @@ void bubbleSort(int arr[], int size) {
       }
     }
     sortedTill--;
+  }
+}
+
+// Merge sort utiltity func
+void merge(int arr[], int left, int mid, int right) {
+  int leftCounter = left;
+  int rightCounter = mid+1;
+
+  int tempArrSize = right - left + 1;
+  int tempArr[tempArrSize];
+  int insertPosition = 0;
+  
+  while (leftCounter < mid + 1 || rightCounter < right +1) {
+    int leftContender = leftCounter == mid + 1? NULL : arr[leftCounter];
+    int rightContender = rightCounter == right +1 ? NULL : arr[rightCounter];
+    
+    if (leftContender != NULL && rightContender != NULL) {
+      if (leftContender > rightContender) {
+        tempArr[insertPosition] = rightContender;
+        rightCounter++;
+      } else {
+        tempArr[insertPosition] = leftContender;
+        leftCounter++;
+      }
+    } else if (leftContender == NULL && rightContender != NULL) {
+        tempArr[insertPosition] = rightContender;
+        rightCounter++;
+    } else {
+        tempArr[insertPosition] = leftContender;
+        leftCounter++;
+    }
+
+    insertPosition++;
+  }
+
+  // copy vals from temp array to the one that was passed in the args
+  for (int offset = 0 ; offset < tempArrSize; offset++) {
+    arr[left+offset] = tempArr[offset];
+  }
+}
+
+void mergeSort(int arr[], int left, int right) {
+  // more than 1 element exists in subarray
+  if (left < right) {
+    int mid = (int) std::floor((left+right)/2);
+
+    mergeSort(arr, left, mid);
+    mergeSort(arr, mid+1, right);
+
+    merge(arr, left, mid, right);
+  } else {
+    // Explicitly defining else for better understanding
+    // only one element exists so do a return
+    // and let the caller merge
+    return;
   }
 }

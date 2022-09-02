@@ -29,7 +29,8 @@ int main() {
     displayArr(randomArr, n);
 
     // insertionSort(randomArr, n);
-    bubbleSort(randomArr, n);
+    // bubbleSort(randomArr, n);
+    mergeSort(randomArr, 0, n-1);
 
     cout << "Sorted Array" << endl;
 
