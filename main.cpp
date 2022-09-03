@@ -1,22 +1,30 @@
 #include <iostream>
 #include <cstdlib>
 #include "sorts.h"
+#include <vector>
 
-using namespace std;
+
+void displayVec(std::vector<int> &arr, int size) {
+  for (int i = 0; i < size; i++) {
+    std::cout << arr[i] << " ";
+  }
+  std::cout << "\n" ;
+}
+
 
 void displayArr(int *arr, int size) {
   for (int i = 0; i < size; i++) {
-    cout << arr[i] << " ";
+    std::cout << arr[i] << " ";
   }
-  cout << "\n" ;
+  std::cout << "\n" ;
 }
 
 int main() {
   int n;
   
   while (n != -1) {
-    cout << "Enter the size of array to be sorted" << endl;
-    cin >> n;
+    std::cout << "Enter the size of array to be sorted" << std::endl;
+    std::cin >> n;
 
     int randomArr[n];
 
@@ -24,21 +32,26 @@ int main() {
       randomArr[i] = 1+ (rand() % 100); 
     }
 
-    cout << "Unsorted Array" << endl;
+    std::cout << "Unsorted Array" << std::endl;
 
     displayArr(randomArr, n);
 
     // insertionSort(randomArr, n);
     // bubbleSort(randomArr, n);
-    mergeSort(randomArr, 0, n-1);
+    // mergeSort(randomArr, 0, n-1);
+    
+    // QUICKSORT
+    std::vector<int> arrToVec(randomArr, randomArr+n);
+    std::vector<int> quickSortedOutput = quickSort(arrToVec);
 
-    cout << "Sorted Array" << endl;
+    std::cout << "Sorted Array" << std::endl;
 
-    displayArr(randomArr, n);
+    displayVec(quickSortedOutput, n);
+    // displayArr(randomArr, n);
 
     char continueSort;
-    cout << "Enter q to quit or c to continue" << endl;
-    cin >> continueSort;
+    std::cout << "Enter q to quit or c to continue" << std::endl;
+    std::cin >> continueSort;
 
     if (continueSort == 'q') {
       break;

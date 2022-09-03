@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <vector>
 
 void swap(int arr[], int i, int j) {
   int temp = arr[i];
@@ -114,4 +115,48 @@ void mergeSort(int arr[], int left, int right) {
     // and let the caller merge
     return;
   }
+}
+
+
+// pick a pivoty randomly or however and put all elements smaller than it to it's left and all greater on right
+// call algorithm recursively on left and right
+// base case for end of recursion is when there is none or one element left at that point we need to begin merging
+// for merging we just take all elements on left and put them on the left and all right and put them on the right
+std::vector<int> quickSort(std::vector<int>& arr) {  
+  int arrSize = arr.size();
+
+  if (arrSize <= 1) {
+    return arr;
+  }
+
+  int lastElementInVector = arrSize-1;
+  int pivot = arr[lastElementInVector];
+  std::vector<int> left;
+  std::vector<int> right;
+  for (int i = 0; i < lastElementInVector; i++) {
+    if (arr[i] <= pivot) {
+      left.push_back(arr[i]);
+    } else {
+      right.push_back(arr[i]);
+    }
+  }
+
+  std::vector<int> sortedLeft = quickSort(left);
+  std::vector<int> sortedRight = quickSort(right);
+
+  // merge left, pivot, right
+  std::vector<int> mergedArr;
+
+  int sortedLeftSize = sortedLeft.size();
+  int sortedRightSize = sortedRight.size();
+
+  // std::cout << sortedLeftSize << sortedRightSize << std::endl;
+  for (int i = 0; i < sortedLeftSize; i++) {
+    mergedArr.push_back(sortedLeft[i]);
+  }
+  mergedArr.push_back(pivot);
+  for(int j = 0; j < sortedRightSize; j++) {
+    mergedArr.push_back(sortedRight[j]);
+  } 
+  return mergedArr;
 }
