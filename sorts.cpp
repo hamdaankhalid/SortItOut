@@ -160,3 +160,49 @@ std::vector<int> quickSort(std::vector<int>& arr) {
   } 
   return mergedArr;
 }
+
+
+int findMax(int arr[], int size) {
+  int maxInArr = -100;
+  for (int i = 0; i < size; ++i) {
+    maxInArr = std::max(maxInArr, arr[i]);
+  }
+  return maxInArr;
+}
+
+void countSort(int arr[], int size){
+  int output[size];
+  for(int i = 0; i < size; ++i)
+    output[i] = 0;
+
+  int maxInArr = findMax(arr, size);
+  int counts[maxInArr+1];
+  for(int i = 0; i < maxInArr + 1; ++i)
+    counts[i] = 0;
+
+  for(int i = 0; i < size; i++) {
+      counts[arr[i]]++;
+  }
+
+  // build accumulated sum
+  for(int i = 1; i < maxInArr+1; ++i) {
+    counts[i] = counts[i]+counts[i-1];
+  }
+
+  /**
+	output[count[array[i]] - 1] = array[i]
+        count[array[i]] -= 1
+  **/
+  // here we go through the input array backwards findingi
+  // the right place to place it in our outputs array
+  for (int i = size-1; i >= 0; i--) {
+    output[counts[arr[i]]-1] = arr[i];
+    counts[arr[i]]--;
+  }
+  
+  // copy output into input array  
+  for(int i = 0; i < size; i++) {
+    arr[i] = output[i];
+  }
+}
+

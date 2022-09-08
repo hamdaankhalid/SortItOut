@@ -10,3 +10,5 @@
 - Bubble sort
 - Merge sort
 - Quick sort
+- Count sort
+

@@ -41,13 +41,15 @@ int main() {
     // mergeSort(randomArr, 0, n-1);
     
     // QUICKSORT
-    std::vector<int> arrToVec(randomArr, randomArr+n);
-    std::vector<int> quickSortedOutput = quickSort(arrToVec);
+    // std::vector<int> arrToVec(randomArr, randomArr+n);
+    // std::vector<int> quickSortedOutput = quickSort(arrToVec);
 
-    std::cout << "Sorted Array" << std::endl;
+    // std::cout << "Sorted Array" << std::endl;
 
-    displayVec(quickSortedOutput, n);
-    // displayArr(randomArr, n);
+    // displayVec(quickSortedOutput, n);
+
+    countSort(randomArr, n);
+    displayArr(randomArr, n);
 
     char continueSort;
     std::cout << "Enter q to quit or c to continue" << std::endl;
