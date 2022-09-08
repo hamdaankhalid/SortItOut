@@ -48,7 +48,9 @@ int main() {
 
     // displayVec(quickSortedOutput, n);
 
-    countSort(randomArr, n);
+    // countSort(randomArr, n);
+    
+    radixSort(randomArr, n);
     displayArr(randomArr, n);
 
     char continueSort;

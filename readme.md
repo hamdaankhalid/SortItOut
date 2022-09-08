@@ -1,9 +1,7 @@
 # Sorting it all out
 
-## Goal: Deeply understand analyze different popular sorting algorithms
-
-## Todo:
-- Radix sort
+## Goal:
+- Deeply understand analyze different popular sorting algorithms
 
 ## Done:
 - Insertion sort
@@ -11,4 +9,4 @@
 - Merge sort
 - Quick sort
 - Count sort
-
+- Radix sort
