@@ -208,8 +208,7 @@ void countSort(int arr[], int size){
 
 
 /**
-recursively call a function that takes an array and sorts it at an index
-start from sorting by the bins of the 0th index, till end of the max index
+iteratively call a function that takes an array and sorts it at an index in a stable algorithm going from 1th place all the way to the highestPlace for the max num in the array
 **/
 void _subRoutineSort(int arr[], int size, int digitToSort) {
   // count sort based off of digit
