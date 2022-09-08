@@ -206,3 +206,33 @@ void countSort(int arr[], int size){
   }
 }
 
+
+/**
+recursively call a function that takes an array and sorts it at an index
+start from sorting by the bins of the 0th index, till end of the max index
+**/
+int getHighestDigitPlace(int arr[], int size) {
+  int highestDig = -1;
+  for (int i = 0; i < size; i++) { 
+   int currNum = arr[i];
+   int places = 1;
+   while(10^places != currNum) {
+     places++;
+   }
+   highestDig = highestDig > places ? highestDig : places;
+  }
+  return highestDig;
+}
+
+void _radixSorted(int arr[], int size, int digitToSort) {
+  // preserve the order unless the bins change bins 0-9
+  
+}
+
+void radixSort(int arr[], int size) {
+  int highestDigitPlace = getHighestDigitPlace(arr, size);  
+  for(int i = 0; i < highestDigitPlace + 1; i++) {
+    _radixSorted(arr, size, i);
+  }
+}
+
